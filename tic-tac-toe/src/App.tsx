@@ -1,8 +1,15 @@
+import { Gamepad2 } from "lucide-react";
+
 function App() {
   return (
-    <h1 className="text-pink bg-blue-100 text-center text-3xl font-bold underline">
-      Hello World
-    </h1>
+    <main className="flex min-h-screen flex-col items-center justify-center bg-blue-200">
+      <div className="w-full max-w-md rounded-2xl bg-blue-100 p-8">
+        <div className="mb-8 flex items-center justify-center gap-2">
+          <Gamepad2 className="text-pink h-8 w-8" />
+          <h1 className="text-4xl font-bold text-white"> Tic Tac Toe </h1>
+        </div>
+      </div>
+    </main>
   );
 }
 
