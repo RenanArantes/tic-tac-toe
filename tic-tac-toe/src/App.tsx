@@ -22,7 +22,9 @@ function App() {
           <h1 className="text-4xl font-bold text-white"> Tic Tac Toe </h1>
         </div>
         <div className="mb-6 text-center">
-          <p className="text-xl font-semibold text-gray-100">Player X's turn</p>
+          <p className="text-xl font-semibold text-gray-100">
+            Player {currentPlayer}'s turn
+          </p>
         </div>
         <Board board={board} onClick={handleClick} />
       </div>

@@ -5,13 +5,20 @@ type SquareProps = {
   onClick: () => void;
 };
 
+const getTextColor = (value: Player | null) => {
+  if (value === "X") {
+    return "text-white";
+  }
+  return "text-pink";
+};
+
 function Square({ value, onClick }: SquareProps) {
   return (
     <button
-      className="h-32 w-32 rounded-xl border-4 border-gray-200 text-4xl font-bold"
+      className={`h-32 w-32 rounded-xl border-4 border-gray-200 text-4xl font-bold ${getTextColor(value)}`}
       onClick={onClick}
     >
-      <span className="text-4xl font-bold text-blue-500">{value}</span>
+      {value}
     </button>
   );
 }
