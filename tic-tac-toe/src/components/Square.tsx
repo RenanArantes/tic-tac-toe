@@ -11,7 +11,7 @@ function Square({ value, onClick }: SquareProps) {
       className="h-32 w-32 rounded-xl border-4 border-gray-200 text-4xl font-bold"
       onClick={onClick}
     >
-      {value}
+      <span className="text-4xl font-bold text-blue-500">{value}</span>
     </button>
   );
 }

@@ -7,9 +7,11 @@ import { BoardState } from "./types";
 function App() {
   const [board, setBoard] = useState<BoardState>(Array(9).fill(null));
 
+  const currentPlayer = board.filter(Boolean).length % 2 === 0 ? "X" : "O";
+
   const handleClick = (index: number) => {
     console.log("clicked: " + index);
-    setBoard(board.map((value, i) => (i === index ? "X" : value)));
+    setBoard(board.map((value, i) => (i === index ? currentPlayer : value)));
   };
 
   return (
