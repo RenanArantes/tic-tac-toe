@@ -1,4 +1,4 @@
-import { Gamepad2 } from "lucide-react";
+import { Gamepad2, RotateCcw } from "lucide-react";
 import { useState } from "react";
 
 import Board from "./components/Board";
@@ -43,6 +43,18 @@ function App() {
           </p>
         </div>
         <Board board={board} winner={winner} onClick={handleClick} />
+
+        {(winner || isDraw) && (
+          <div className="mt-8 flex justify-center">
+            <button
+              className="group flex items-center gap-2 rounded-lg bg-pink px-6 py-3 text-sm text-white hover:opacity-90"
+              // onClick={handleReset}
+            >
+              Reset
+              <RotateCcw className="h-4 w-4 transition-transform duration-500 group-hover:-rotate-180" />
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
