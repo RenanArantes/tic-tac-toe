@@ -30,6 +30,10 @@ function App() {
     return `Player ${currentPlayer}'s turn`;
   };
 
+  const handleReset = () => {
+    setBoard(Array(9).fill(null));
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-blue-200">
       <div className="w-full max-w-lg rounded-2xl bg-blue-100 p-8">
@@ -48,7 +52,7 @@ function App() {
           <div className="mt-8 flex justify-center">
             <button
               className="group flex items-center gap-2 rounded-lg bg-pink px-6 py-3 text-sm text-white hover:opacity-90"
-              // onClick={handleReset}
+              onClick={handleReset}
             >
               Reset
               <RotateCcw className="h-4 w-4 transition-transform duration-500 group-hover:-rotate-180" />
