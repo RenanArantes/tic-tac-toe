@@ -2,16 +2,32 @@ import { Gamepad2 } from "lucide-react";
 import { useState } from "react";
 
 import Board from "./components/Board";
+import { checkWinningCombination, isBoardFull } from "./helpers/game-logic";
 import { BoardState } from "./types";
 
 function App() {
   const [board, setBoard] = useState<BoardState>(Array(9).fill(null));
+  const winner = checkWinningCombination(board);
+  const isDraw = isBoardFull(board) && !winner;
 
   const currentPlayer = board.filter(Boolean).length % 2 === 0 ? "X" : "O";
 
   const handleClick = (index: number) => {
-    console.log("clicked: " + index);
+    if (board[index] || winner) return;
+
     setBoard(board.map((value, i) => (i === index ? currentPlayer : value)));
+  };
+
+  const getGameStatus = () => {
+    if (winner) {
+      return `Player ${winner} is the winner!`;
+    }
+
+    if (isDraw) {
+      return "It's a draw!";
+    }
+
+    return `Player ${currentPlayer}'s turn`;
   };
 
   return (
@@ -23,10 +39,10 @@ function App() {
         </div>
         <div className="mb-6 text-center">
           <p className="text-xl font-semibold text-gray-100">
-            Player {currentPlayer}'s turn
+            {getGameStatus()}
           </p>
         </div>
-        <Board board={board} onClick={handleClick} />
+        <Board board={board} winner={winner} onClick={handleClick} />
       </div>
     </main>
   );
